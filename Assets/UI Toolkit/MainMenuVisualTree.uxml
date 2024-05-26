@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=304f3393158cf4540a77755c317af1d5&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128); background-color: rgba(140, 140, 140, 0); background-image: url(&quot;project://database/Assets/GameDevTVJam2024/5_Textures/UI/Sprites/Default_Inmune_system_battling_bacterias_and_viruses_2.jpg?fileID=21300000&amp;guid=ff8077bf7d017f64f8cc84b2773932e3&amp;type=3#Default_Inmune_system_battling_bacterias_and_viruses_2&quot;);">
+        <ui:Label tabindex="-1" text="Game Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="header" />
+        <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="button" />
+        <ui:Button text="How To Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HowToButton" enable-rich-text="false" class="button" />
+        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="button" />
+    </ui:VisualElement>
+</ui:UXML>
