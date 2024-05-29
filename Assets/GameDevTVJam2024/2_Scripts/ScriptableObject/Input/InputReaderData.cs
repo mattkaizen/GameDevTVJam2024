@@ -8,7 +8,8 @@ namespace Data
     [CreateAssetMenu(menuName = "InputReader", fileName = "InputReaderData")]
     public class InputReaderData : ScriptableObject, GameControls.IPlayerActions
     {
-        public event UnityAction Selected = delegate { };
+        public event UnityAction SelectDown = delegate { };
+        public event UnityAction SelectUp = delegate { };
         public event UnityAction Cancel = delegate { };
         public Vector2 MousePosition => _mousePosition;
 
@@ -37,7 +38,12 @@ namespace Data
         {
             if (_playerInputActions.Player.Select.WasPerformedThisFrame())
             {
-                Selected?.Invoke();
+                SelectDown?.Invoke();
+            }
+            
+            if (_playerInputActions.Player.Select.WasReleasedThisFrame())
+            {
+                SelectUp?.Invoke();
             }
         }
 
