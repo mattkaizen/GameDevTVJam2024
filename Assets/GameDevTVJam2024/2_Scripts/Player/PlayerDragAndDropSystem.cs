@@ -57,7 +57,7 @@ namespace Player
                 return;
             }
 
-            if (container.TryGetComponent<IUnitContainer>(out var unitContainer) && unitContainer.IsAvailable)
+            if (container.TryGetComponent<IUnitContainer>(out var unitContainer) && unitContainer.CanContainUnit && unitContainer.IsAvailable)
             {
                 _currentUnitContainer = unitContainer;
                 unitContainer.ShowUnitPreview(cardInteractable.GetUnit());

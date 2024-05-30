@@ -71,9 +71,10 @@ namespace Object
                 return;
             }
 
-            if (objectToDropOn.TryGetComponent<IUnitContainer>(out var container) && container.IsAvailable)
+            if (objectToDropOn.TryGetComponent<IUnitContainer>(out var container))
             {
-                container.Contain(_instantiatedUnit);
+                if (!container.Contain(_instantiatedUnit)) return;
+                
                 container.HideUnitPreview();
                 GetUnit().EnableUnitBehaviour();
                 _instantiatedUnit = null;

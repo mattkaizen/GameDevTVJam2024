@@ -6,10 +6,11 @@ namespace Grid
 {
     public class UnitContainer : MonoBehaviour, IUnitContainer
     {
-        public bool CanContainUnit { get; }
+        public bool CanContainUnit => canContainUnit;
         public bool IsAvailable => _isAvailable;
         
         //TODO: It has to have TileType?
+        [SerializeField] private bool canContainUnit = true;
         [SerializeField] private GameObject containedObject;
         
         private GameObject _previewObject;
@@ -22,10 +23,9 @@ namespace Grid
             _isAvailable = true;
         }
 
-
-
         public bool Contain(GameObject objectToContain)
         {
+            if (!canContainUnit) return false;
             if (!_isAvailable) return false;
             
             objectToContain.transform.SetParent(gameObject.transform);
