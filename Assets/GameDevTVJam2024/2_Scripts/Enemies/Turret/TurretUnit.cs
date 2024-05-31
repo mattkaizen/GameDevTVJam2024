@@ -51,7 +51,7 @@ namespace Enemies
         {
             var unitObject = gameObject;
             Bullet currentBullet = bulletSpawnerData.Pool.Get();
-            
+            currentBullet.MaxContainerRange = _turretStatsData.BulletRange;
             currentBullet.gameObject.transform.position = bulletSpawnPoint.transform.position;
             currentBullet.SetVelocity(unitObject.transform.right, _turretStatsData.BulletSpeed);
         }

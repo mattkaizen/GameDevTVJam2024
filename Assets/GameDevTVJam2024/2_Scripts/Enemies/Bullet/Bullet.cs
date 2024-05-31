@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Domain;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -9,7 +8,7 @@ namespace Enemies
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        
+
         private IObjectPool<Bullet> _objectPool;
         public int CurrentDamage
         {
@@ -19,11 +18,11 @@ namespace Enemies
         public int MaxContainerRange
         {
             get => _maxContainerRange;
-            set => _maxContainerRange = value;
+            set => _maxContainerRange = value + 1;
         }
-        
+
         const float minDistanceThresholdToContainer = 0.05f;
-        
+
         private int _currentDamage;
         private int _maxContainerRange;
         private int _crossedUnitContainerAmount;
@@ -33,12 +32,13 @@ namespace Enemies
             get => _objectPool;
             set => _objectPool = value;
         }
+
         private void OnEnable()
         {
             InitializeBullet();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             TryDamage(other.gameObject);
             TryUpdateCrossedContainerAmount(other.gameObject);
@@ -49,6 +49,7 @@ namespace Enemies
             if (other.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.TakeDamage(CurrentDamage);
+                Debug.Log($"Bullet: Disable on hit Damageable {other.name}");
                 DisableBullet();
             }
         }
@@ -58,12 +59,15 @@ namespace Enemies
             if (other.TryGetComponent<IUnitContainer>(out var container))
             {
                 _crossedUnitContainerAmount++;
+                Debug.Log($"UnitContainer Crossed {_crossedUnitContainerAmount}");
                 if (IsOnTheMaxContainer())
                 {
+                    Debug.Log($"Is on the last container");
                     DeactivateBulletAtMaxRange(other);
                 }
             }
         }
+
         public void SetVelocity(Vector2 direction, float movementSpeed)
         {
             _rigidbody2D.velocity = direction * movementSpeed;
@@ -72,7 +76,8 @@ namespace Enemies
         private IEnumerator DeactivateBulletAtMaxRangeRoutine(GameObject container)
         {
             yield return new WaitUntil(() => IsOnTheMaxContainerRange(container));
-            
+            Debug.Log("Bullet: Disable at Max Range");
+
             DisableBullet();
         }
 
@@ -83,20 +88,24 @@ namespace Enemies
 
         private void InitializeBullet()
         {
+            _crossedUnitContainerAmount = 0;
             _rigidbody2D.velocity = Vector2.zero;
         }
+
         private void DisableBullet()
         {
             _objectPool.Release(this);
         }
+
         private bool IsOnTheMaxContainerRange(GameObject maxContainer)
         {
             return IsCloseToMaxContainerCenter(maxContainer) || HasCrossedMaxContainerRange(maxContainer);
         }
+
         private bool HasCrossedMaxContainerRange(GameObject maxContainer)
         {
             var maxContainerPosition = maxContainer.transform.position;
-            
+
             Vector3 directionToMaxContainer = gameObject.transform.position - maxContainerPosition;
             Vector3 crossProduct = Vector3.Cross(maxContainer.transform.right, directionToMaxContainer);
 
@@ -108,7 +117,6 @@ namespace Enemies
             float distanceToMaxContainer = Vector3.Distance(_rigidbody2D.position, maxContainer.transform.position);
             return distanceToMaxContainer < minDistanceThresholdToContainer;
         }
-
 
         private bool IsOnTheMaxContainer()
         {

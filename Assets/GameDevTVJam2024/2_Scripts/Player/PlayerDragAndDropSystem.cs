@@ -56,9 +56,14 @@ namespace Player
                 cardInteractable.GetUnit().Display.DisablePreview();
                 return;
             }
-
+            
             if (container.TryGetComponent<IUnitContainer>(out var unitContainer) && unitContainer.CanContainUnit && unitContainer.IsAvailable)
             {
+                if (_currentUnitContainer != null && _currentUnitContainer != unitContainer)
+                {
+                    ResetContainerPreview();
+                    cardInteractable.GetUnit().Display.DisablePreview();
+                }
                 _currentUnitContainer = unitContainer;
                 unitContainer.ShowUnitPreview(cardInteractable.GetUnit());
             }

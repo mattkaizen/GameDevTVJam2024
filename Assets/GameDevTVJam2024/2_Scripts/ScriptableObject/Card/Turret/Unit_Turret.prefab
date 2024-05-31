@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2897309861551259594}
   - component: {fileID: 8778103186957689957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite_Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7145570428503094165}
   - component: {fileID: 7502948886093571247}
   - component: {fileID: 8862652968770086655}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Unit_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5607944741333013467}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bullet_SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8031646109559760276}
   - component: {fileID: 5088314338949834097}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}

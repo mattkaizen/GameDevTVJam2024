@@ -39,6 +39,7 @@ namespace Grid
         
         public void ShowUnitPreview(Unit unit)
         {
+            Debug.Log("Try show Preview");
             if (!_isAvailable) return;
             if (_hasPreviewObject) return;
 

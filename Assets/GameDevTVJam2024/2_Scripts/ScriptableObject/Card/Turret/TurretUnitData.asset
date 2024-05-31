@@ -16,4 +16,4 @@ MonoBehaviour:
   fireRate: 2
   bulletDamage: 20
   bulletSpeed: 5
-  bulletRange: 100
+  bulletRange: 2

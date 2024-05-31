@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Unit
   - Water
   - UI
   - Enemy
-  - 
-  - 
-  - 
+  - UnitBullet
+  - Container
+  - EnemyBullet
   - 
   - 
   - 
