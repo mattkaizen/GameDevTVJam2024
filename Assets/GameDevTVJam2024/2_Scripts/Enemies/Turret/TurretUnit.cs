@@ -7,11 +7,13 @@ namespace Enemies
     public class TurretUnit : Unit
     {
         [SerializeField] private BoxCollider2D bodyCollider;
-        [SerializeField] private BulletSpawner bulletSpawner;
+        [SerializeField] private BulletSpawnerData bulletSpawnerData;
+        [SerializeField] private GameObject bulletSpawnPoint;
         private TurretData _turretStatsData => statsData as TurretData;
         private IEnumerator _attackRoutine;
         public override void EnableUnitBehaviour()
         {
+            IsAlive = true;
             StartAttackRoutine();
         }
 
@@ -37,9 +39,21 @@ namespace Enemies
         private IEnumerator AttackRoutine()
         {
             if (_turretStatsData == null) yield break;
+
+            while (IsAlive)
+            {
+                FireBullet();
+                yield return new WaitForSeconds(_turretStatsData.FireRate);
+            }
+        }
+
+        private void FireBullet()
+        {
+            var unitObject = gameObject;
+            Bullet currentBullet = bulletSpawnerData.Pool.Get();
             
-            bulletSpawner.Pool.Get();
-            yield return new WaitForSeconds(_turretStatsData.FireRate);
+            currentBullet.gameObject.transform.position = bulletSpawnPoint.transform.position;
+            currentBullet.SetVelocity(unitObject.transform.right, _turretStatsData.BulletSpeed);
         }
     }
 }

@@ -24,9 +24,7 @@ namespace Enemies
 
         private int _minHealth;
         private int _maxHealth;
-        
         private int _currentHealth;
-        
 
         public void Increment(int amount)
         {
@@ -41,9 +39,16 @@ namespace Enemies
             _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
             UpdateHealth();
         }
+        
+
         private void UpdateHealth()
         {
             HealthChanged?.Invoke();
+        }
+        
+        public bool HasRemainingHealth()
+        {
+            return _currentHealth > _minHealth;
         }
     }
 }
