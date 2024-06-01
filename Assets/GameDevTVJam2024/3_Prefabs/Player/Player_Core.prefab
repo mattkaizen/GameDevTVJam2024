@@ -94,7 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 933591310515707598}
   - component: {fileID: 1438925029273082926}
-  m_Layer: 0
+  - component: {fileID: 4574486872432974039}
+  - component: {fileID: 6915554789541908176}
+  m_Layer: 3
   m_Name: Player_Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +148,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.02481544, y: 0}
@@ -162,3 +164,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.070771, y: 3.0946631}
   m_EdgeRadius: 0
+--- !u!114 &4574486872432974039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602748518672861228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747679532163b3744b28f5508ba196db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Died:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8602748518672861228}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  health: {fileID: 6915554789541908176}
+  statsData: {fileID: 11400000, guid: ef437e0a2a49e5b4ba3cb40770e63d50, type: 2}
+--- !u!114 &6915554789541908176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602748518672861228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5827bdd9561a43a3a5b8e1eed369ed30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
