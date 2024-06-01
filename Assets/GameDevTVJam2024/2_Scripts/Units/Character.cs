@@ -5,24 +5,22 @@ using UnityEngine.Events;
 
 namespace Enemies
 {
-    public abstract class Unit : MonoBehaviour, IDamageable
+    public abstract class Character : MonoBehaviour, IDamageable
     {
         public UnityEvent Died;
-        public UnitDisplay Display => display;
-        public int CurrentHealth { get; set; }
         public bool IsAlive { get; set; }
+        public int CurrentHealth { get; set; }
 
-        [SerializeField] protected UnitStatsData statsData;
-        [SerializeField] protected UnitDisplay display;
+        [SerializeField] protected CharacterStatsData statsData;
         [SerializeField] protected Health health;
 
-        private void OnEnable()
+        public virtual void OnEnable()
         {
             InitializeHealth();
         }
         
-        public abstract void EnableUnitBehaviour();
-        public abstract void DisableUnitBehaviour();
+        public abstract void EnableCharacterBehaviour();
+        public abstract void DisableCharacterBehaviour();
         
         private void InitializeHealth()
         {
@@ -40,10 +38,10 @@ namespace Enemies
         public void Die()
         {
             IsAlive = false;
-            DisableUnitBehaviour();
+            DisableCharacterBehaviour();
             Died?.Invoke();
+            Debug.Log($"Character: {gameObject.name} died");
         }
-
 
     }
 }

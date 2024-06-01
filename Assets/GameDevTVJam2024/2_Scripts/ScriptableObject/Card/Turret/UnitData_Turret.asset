@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73d851ebd9fe41609eeb313bb269af91, type: 3}
-  m_Name: TurretUnitData
+  m_Name: UnitData_Turret
   m_EditorClassIdentifier: 
   maxHealth: 100
   fireRate: 2
   bulletDamage: 20
   bulletSpeed: 5
-  bulletRange: 2
+  bulletRange: 4

@@ -11,13 +11,15 @@ namespace Enemies
         [SerializeField] private GameObject bulletSpawnPoint;
         private TurretData _turretStatsData => statsData as TurretData;
         private IEnumerator _attackRoutine;
-        public override void EnableUnitBehaviour()
+
+        public override void EnableCharacterBehaviour()
         {
             IsAlive = true;
+            bodyCollider.enabled = true;
             StartAttackRoutine();
         }
 
-        public override void DisableUnitBehaviour()
+        public override void DisableCharacterBehaviour()
         {
             bodyCollider.enabled = false;
             StopAttackRoutine();
@@ -53,6 +55,7 @@ namespace Enemies
             Bullet currentBullet = bulletSpawnerData.Pool.Get();
             currentBullet.MaxContainerRange = _turretStatsData.BulletRange;
             currentBullet.gameObject.transform.position = bulletSpawnPoint.transform.position;
+            currentBullet.CurrentDamage = _turretStatsData.BulletDamage;
             currentBullet.SetVelocity(unitObject.transform.right, _turretStatsData.BulletSpeed);
         }
     }

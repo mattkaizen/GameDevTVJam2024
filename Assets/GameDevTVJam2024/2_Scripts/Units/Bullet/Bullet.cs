@@ -49,7 +49,6 @@ namespace Enemies
             if (other.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.TakeDamage(CurrentDamage);
-                Debug.Log($"Bullet: Disable on hit Damageable {other.name}");
                 DisableBullet();
             }
         }
@@ -59,10 +58,8 @@ namespace Enemies
             if (other.TryGetComponent<IUnitContainer>(out var container))
             {
                 _crossedUnitContainerAmount++;
-                Debug.Log($"UnitContainer Crossed {_crossedUnitContainerAmount}");
                 if (IsOnTheMaxContainer())
                 {
-                    Debug.Log($"Is on the last container");
                     DeactivateBulletAtMaxRange(other);
                 }
             }
@@ -76,8 +73,6 @@ namespace Enemies
         private IEnumerator DeactivateBulletAtMaxRangeRoutine(GameObject container)
         {
             yield return new WaitUntil(() => IsOnTheMaxContainerRange(container));
-            Debug.Log("Bullet: Disable at Max Range");
-
             DisableBullet();
         }
 

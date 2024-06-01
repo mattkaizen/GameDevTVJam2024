@@ -3,7 +3,7 @@
 namespace Data
 {
     [CreateAssetMenu(fileName = "UnitData", menuName = "Card/Unit", order = 0)]
-    public class UnitStatsData : ScriptableObject
+    public class CharacterStatsData : ScriptableObject
     {
         public int MaxHealth => maxHealth;
 

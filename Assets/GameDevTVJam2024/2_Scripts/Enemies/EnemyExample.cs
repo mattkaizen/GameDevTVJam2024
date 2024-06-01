@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyExample : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float enemySpeed = 0.1f;

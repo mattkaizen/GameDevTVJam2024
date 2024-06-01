@@ -7,11 +7,11 @@ namespace Data
     {
         //Maybe CD
         public int Cost => cost;
-        public UnitStatsData UnitStatsData => unitStatsData;
+        public CharacterStatsData CharacterStatsData => characterStatsData;
         public GameObject UnitPrefab => unitPrefab;
 
         [SerializeField] private int cost;
         [SerializeField] private GameObject unitPrefab;
-        [SerializeField] private UnitStatsData unitStatsData;
+        [SerializeField] private CharacterStatsData characterStatsData;
     }
 }

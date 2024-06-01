@@ -3,7 +3,7 @@
 namespace Data
 {
     [CreateAssetMenu(fileName = "TurretUnitData", menuName = "Card/Unit/Turret", order = 0)]
-    public class TurretData : UnitStatsData
+    public class TurretData : CharacterStatsData
     {
         public int BulletRange => bulletRange;
         public float FireRate => fireRate;

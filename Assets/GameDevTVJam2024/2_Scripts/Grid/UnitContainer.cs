@@ -39,7 +39,6 @@ namespace Grid
         
         public void ShowUnitPreview(Unit unit)
         {
-            Debug.Log("Try show Preview");
             if (!_isAvailable) return;
             if (_hasPreviewObject) return;
 
@@ -49,16 +48,12 @@ namespace Grid
             _previewObject.transform.localPosition = Vector3.zero;
             _hasPreviewObject = true;
             unit.Display.EnablePreview();
-            Debug.Log("Show Preview");
         }
 
         public void HideUnitPreview()
         {
             _hasPreviewObject = false;
             _previewObject = null;
-            
-            Debug.Log("Hide Preview");
-
         }
 
         public void ClearContainer()

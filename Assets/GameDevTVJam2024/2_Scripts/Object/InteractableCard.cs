@@ -76,7 +76,7 @@ namespace Object
                 if (!container.Contain(_instantiatedUnit)) return;
                 
                 container.HideUnitPreview();
-                GetUnit().EnableUnitBehaviour();
+                GetUnit().EnableCharacterBehaviour();
                 _instantiatedUnit = null;
             }
             else
