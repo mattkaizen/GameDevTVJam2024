@@ -1,5 +1,6 @@
 ﻿using Enemy;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Enemies
 {
@@ -8,11 +9,19 @@ namespace Enemies
         public EnemyMovement Movement => enemyMovement;
         public EnemyStatsData Data => statsData as EnemyStatsData;
         public EnemyDetectionSystem DetectionSystem => detectionSystem;
+        public IObjectPool<EnemyAI> Pool
+        {
+            get => ObjectPool;
+            set => ObjectPool = value;
+        }
 
         [SerializeField] private EnemyMovement enemyMovement;
         [SerializeField] private EnemyDetectionSystem detectionSystem;
 
         protected EnemyState EnemyState;
+        
+        protected IObjectPool<EnemyAI> ObjectPool;
+
         
         private void Update()
         {
