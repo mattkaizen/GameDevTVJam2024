@@ -8,5 +8,10 @@ namespace Enemies
 
         [SerializeField] protected UnitDisplay display;
 
+        public void RotateUnit(Vector3 directionToRotate)
+        {
+            gameObject.transform.up = directionToRotate;
+        }
+
     }
 }

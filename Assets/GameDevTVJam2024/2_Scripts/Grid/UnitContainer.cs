@@ -44,7 +44,7 @@ namespace Grid
 
             _previewObject = unit.Display.PreviewObject;
             _previewObject.transform.SetParent(transform);
-            _previewObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            _previewObject.transform.up = transform.right;
             _previewObject.transform.localPosition = Vector3.zero;
             _hasPreviewObject = true;
             unit.Display.EnablePreview();
@@ -61,6 +61,11 @@ namespace Grid
             containedObject.SetActive(false);
             containedObject = null;
             _isAvailable = true;
+        }
+
+        public GameObject GetContainer()
+        {
+            return gameObject;
         }
     }
 }

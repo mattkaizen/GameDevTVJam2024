@@ -7,6 +7,7 @@ namespace Player
     public class PlayerDragAndDropSystem : MonoBehaviour
     {
         [SerializeField] private PlayerRaycast playerRaycast;
+        [SerializeField] private PlayerMoneyHandler playerMoneyHandler;
 
         private IUnitContainer _currentUnitContainer;
         private IEnumerator _draggingCardRoutine;
@@ -43,7 +44,10 @@ namespace Player
         {
             var container = playerRaycast.RaycastToContainer();
 
-            cardInteractable.DropCardUnitOn(container);
+            if (cardInteractable.DropCardUnitOn(container))
+            {
+                playerMoneyHandler.DeductMoney(cardInteractable.Data.Cost);
+            }
         }
 
         private void ShowUnitPreviewIfOverContainer(ICardInteractable cardInteractable)
@@ -64,6 +68,8 @@ namespace Player
                     ResetContainerPreview();
                     cardInteractable.GetUnit().Display.DisablePreview();
                 }
+
+                cardInteractable.GetUnit().RotateUnit(unitContainer.GetContainer().transform.right);
                 _currentUnitContainer = unitContainer;
                 unitContainer.ShowUnitPreview(cardInteractable.GetUnit());
             }
@@ -73,7 +79,7 @@ namespace Player
                 cardInteractable.GetUnit().Display.DisablePreview();
             }
         }
-
+        
         private void ResetContainerPreview()
         {
             if (_currentUnitContainer == null) return;

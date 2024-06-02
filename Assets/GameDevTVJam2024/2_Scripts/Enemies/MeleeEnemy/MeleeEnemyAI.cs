@@ -27,6 +27,7 @@ namespace Enemies
         public override void DisableCharacterBehaviour()
         {
             bodyCollider2D.enabled = false;
+            EnemyAIDied.RaiseEvent(this);
         }
     }
 }

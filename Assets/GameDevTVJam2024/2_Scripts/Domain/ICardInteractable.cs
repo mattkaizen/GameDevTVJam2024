@@ -11,6 +11,6 @@ namespace Domain
         Unit GetUnit();
         void InitializeCardUnit();
         void DragCardUnit();
-        void DropCardUnitOn(GameObject objectToDropOn);
+        bool DropCardUnitOn(GameObject objectToDropOn);
     }
 }

@@ -7,9 +7,12 @@ namespace Enemies
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D _rigidbody2D;
+        public IObjectPool<Bullet> Pool
+        {
+            get => _objectPool;
+            set => _objectPool = value;
+        }
 
-        private IObjectPool<Bullet> _objectPool;
         public int CurrentDamage
         {
             get => _currentDamage;
@@ -20,18 +23,17 @@ namespace Enemies
             get => _maxContainerRange;
             set => _maxContainerRange = value + 1;
         }
+        
+        [SerializeField] private Rigidbody2D _rigidbody2D;
+
+        private IObjectPool<Bullet> _objectPool;
+        private IEnumerator _disableBulletAtMaxRangeRoutine;
 
         const float minDistanceThresholdToContainer = 0.05f;
 
         private int _currentDamage;
         private int _maxContainerRange;
         private int _crossedUnitContainerAmount;
-
-        public IObjectPool<Bullet> Pool
-        {
-            get => _objectPool;
-            set => _objectPool = value;
-        }
 
         private void OnEnable()
         {
@@ -78,7 +80,8 @@ namespace Enemies
 
         private void DeactivateBulletAtMaxRange(GameObject container)
         {
-            StartCoroutine(DeactivateBulletAtMaxRangeRoutine(container));
+            _disableBulletAtMaxRangeRoutine = DeactivateBulletAtMaxRangeRoutine(container);
+            StartCoroutine(_disableBulletAtMaxRangeRoutine);
         }
 
         private void InitializeBullet()
@@ -89,6 +92,7 @@ namespace Enemies
 
         private void DisableBullet()
         {
+            StopDisableBulletAtMaxRangeRoutine();
             _objectPool.Release(this);
         }
 
@@ -116,6 +120,12 @@ namespace Enemies
         private bool IsOnTheMaxContainer()
         {
             return _crossedUnitContainerAmount == MaxContainerRange;
+        }
+
+        private void StopDisableBulletAtMaxRangeRoutine()
+        {
+            if(_disableBulletAtMaxRangeRoutine != null)
+                StopCoroutine(_disableBulletAtMaxRangeRoutine);
         }
     }
 }

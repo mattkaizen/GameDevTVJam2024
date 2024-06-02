@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad39a6b2e9d4061984f138a9c09e572, type: 3}
   m_Name: Card_Turret
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 50
   unitPrefab: {fileID: 2262014962638831390, guid: 18d55d3f504864f4bbffd8e31ce12621, type: 3}
   characterStatsData: {fileID: 11400000, guid: 816b68ef0ee9c924eb8d4a3c789d7d3e, type: 2}

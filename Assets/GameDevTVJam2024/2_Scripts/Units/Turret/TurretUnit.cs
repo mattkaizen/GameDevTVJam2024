@@ -56,7 +56,7 @@ namespace Enemies
             currentBullet.MaxContainerRange = _turretStatsData.BulletRange;
             currentBullet.gameObject.transform.position = bulletSpawnPoint.transform.position;
             currentBullet.CurrentDamage = _turretStatsData.BulletDamage;
-            currentBullet.SetVelocity(unitObject.transform.right, _turretStatsData.BulletSpeed);
+            currentBullet.SetVelocity(unitObject.transform.up, _turretStatsData.BulletSpeed);
         }
     }
 }

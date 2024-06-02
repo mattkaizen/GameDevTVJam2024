@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022531551851365121}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.69, y: -3.354, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   health: {fileID: 155434831699418011}
   enemyMovement: {fileID: 5642823294355974016}
   detectionSystem: {fileID: 6772898238977427464}
+  enemyAIDied: {fileID: 11400000, guid: 9f24a3398d732d64b9d30eb5ad2421e0, type: 2}
   meleeDamagePerformer: {fileID: 2399532820688501650}
   bodyCollider2D: {fileID: 3498581856935421368}
 --- !u!114 &5642823294355974016

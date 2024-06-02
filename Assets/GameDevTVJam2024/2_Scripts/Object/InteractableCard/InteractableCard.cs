@@ -9,6 +9,7 @@ namespace Object
     {
         [SerializeField] private CardData cardData;
         [SerializeField] private InputReaderData inputReader;
+        [SerializeField] private InteractableCardDisplay display;
 
         private GameObject _instantiatedUnit;
         private bool _isBeingDragged;
@@ -22,6 +23,7 @@ namespace Object
         private void OnEnable()
         {
             GameObject unitObject = GetUnitObject();
+            display.UpdateCostText(cardData.Cost.ToString());
             unitObject.SetActive(false);
         }
 
@@ -63,26 +65,27 @@ namespace Object
             MoveUnitToMouseWorldPosition();
         }
 
-        public void DropCardUnitOn(GameObject objectToDropOn)
+        public bool DropCardUnitOn(GameObject objectToDropOn)
         {
             if (objectToDropOn == null)
             {
                 HideUnit();
-                return;
+                return false;
             }
 
             if (objectToDropOn.TryGetComponent<IUnitContainer>(out var container))
             {
-                if (!container.Contain(_instantiatedUnit)) return;
+                if (!container.Contain(_instantiatedUnit)) return false;
                 
+                GetUnit().RotateUnit(container.GetContainer().transform.right);
                 container.HideUnitPreview();
                 GetUnit().EnableCharacterBehaviour();
                 _instantiatedUnit = null;
+                return true;
             }
-            else
-            {
-                HideUnit();
-            }
+
+            HideUnit();
+            return false;
         }
 
         private void DisplayUnit()

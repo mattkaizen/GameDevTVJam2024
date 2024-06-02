@@ -9,9 +9,11 @@ namespace Enemy
         public int Damage => damage;
         public float MovementSpeed => movementSpeed;
         public float AttackRate => attackRate;
+        public int MoneyDropped => moneyDropped;
 
         [SerializeField] private int damage;
         [SerializeField] private float movementSpeed;
         [SerializeField] private float attackRate;
+        [SerializeField] private int moneyDropped;
     }
 }

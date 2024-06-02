@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a2172ca00449828fd829bb9db96e30, type: 3}
-  m_Name: EnemyStats_Melee
+  m_Script: {fileID: 11500000, guid: fe3af8e7ceca46cbb0161cbc23ac1bd3, type: 3}
+  m_Name: EnemyAI_Died
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 50
-  movementSpeed: 0.25
-  attackRate: 2
-  moneyDropped: 10
