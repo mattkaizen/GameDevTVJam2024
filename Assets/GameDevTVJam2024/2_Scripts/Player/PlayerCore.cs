@@ -41,6 +41,5 @@ public class PlayerCore : MonoBehaviour, IDamageable
     {
         IsAlive = false;
         Died?.Invoke();
-        Debug.Log($"Character: {gameObject.name} died");
     }
 }

@@ -11,7 +11,7 @@ namespace Grid
         
         //TODO: It has to have TileType?
         [SerializeField] private bool canContainUnit = true;
-        [SerializeField] private GameObject containedObject;
+        [SerializeField] private Unit containedUnit;
         
         private GameObject _previewObject;
         
@@ -22,21 +22,27 @@ namespace Grid
         {
             _isAvailable = true;
         }
+        
+        private void OnUnitDied()
+        {
+            ClearContainer();
+        }
 
-        public bool Contain(GameObject objectToContain)
+        public bool Contain(Unit unitToContain)
         {
             if (!canContainUnit) return false;
             if (!_isAvailable) return false;
             
-            objectToContain.transform.SetParent(gameObject.transform);
-            objectToContain.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            objectToContain.transform.localPosition = Vector3.zero;
+            unitToContain.gameObject.transform.SetParent(gameObject.transform);
+            unitToContain.gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            unitToContain.gameObject.transform.localPosition = Vector3.zero;
 
-            containedObject = objectToContain;
+            containedUnit = unitToContain;
             _isAvailable = false;
+            unitToContain.Died.AddListener(OnUnitDied);
             return true;
         }
-        
+
         public void ShowUnitPreview(Unit unit)
         {
             if (!_isAvailable) return;
@@ -50,16 +56,17 @@ namespace Grid
             unit.Display.EnablePreview();
         }
 
-        public void HideUnitPreview()
+        public void HideUnitPreview(Unit unit)
         {
+            unit.Display.DisablePreview();
             _hasPreviewObject = false;
             _previewObject = null;
         }
 
         public void ClearContainer()
         {
-            containedObject.SetActive(false);
-            containedObject = null;
+            containedUnit.Died.RemoveListener(OnUnitDied);
+            containedUnit = null;
             _isAvailable = true;
         }
 

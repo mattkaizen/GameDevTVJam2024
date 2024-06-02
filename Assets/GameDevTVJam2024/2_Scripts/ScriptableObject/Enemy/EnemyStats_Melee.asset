@@ -16,4 +16,4 @@ MonoBehaviour:
   damage: 10
   movementSpeed: 0.1
   attackRate: 2
-  moneyDropped: 20
+  moneyDropped: 25

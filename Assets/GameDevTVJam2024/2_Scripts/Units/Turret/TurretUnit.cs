@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using Data;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Enemies
 {
     public class TurretUnit : Unit
     {
+        public event UnityAction BulletFired = delegate {  };
+        
         [SerializeField] private BoxCollider2D bodyCollider;
         [SerializeField] private BulletSpawnerData bulletSpawnerData;
         [SerializeField] private GameObject bulletSpawnPoint;
@@ -16,12 +19,14 @@ namespace Enemies
         {
             IsAlive = true;
             bodyCollider.enabled = true;
+            display.EnableUnitSprite();
             StartAttackRoutine();
         }
 
         public override void DisableCharacterBehaviour()
         {
             bodyCollider.enabled = false;
+            display.DisableUnitSprite();
             StopAttackRoutine();
         }
 
@@ -57,6 +62,7 @@ namespace Enemies
             currentBullet.gameObject.transform.position = bulletSpawnPoint.transform.position;
             currentBullet.CurrentDamage = _turretStatsData.BulletDamage;
             currentBullet.SetVelocity(unitObject.transform.up, _turretStatsData.BulletSpeed);
+            BulletFired?.Invoke();
         }
     }
 }

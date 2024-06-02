@@ -75,10 +75,14 @@ namespace Object
 
             if (objectToDropOn.TryGetComponent<IUnitContainer>(out var container))
             {
-                if (!container.Contain(_instantiatedUnit)) return false;
+                if (!container.Contain(GetUnit()))
+                {
+                    HideUnit();
+                    return false;
+                }
                 
                 GetUnit().RotateUnit(container.GetContainer().transform.right);
-                container.HideUnitPreview();
+                container.HideUnitPreview(GetUnit());
                 GetUnit().EnableCharacterBehaviour();
                 _instantiatedUnit = null;
                 return true;

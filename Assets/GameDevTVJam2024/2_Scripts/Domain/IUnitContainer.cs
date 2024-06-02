@@ -7,9 +7,9 @@ namespace Domain
     {
         bool IsAvailable { get; }
         bool CanContainUnit { get; }
-        bool Contain(GameObject objectToContain);
+        bool Contain(Unit objectToContain);
         void ShowUnitPreview(Unit unit);
-        void HideUnitPreview();
+        void HideUnitPreview(Unit unit);
         void ClearContainer();
         GameObject GetContainer();
 

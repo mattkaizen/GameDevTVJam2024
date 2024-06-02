@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1438925029273082926}
   - component: {fileID: 4574486872432974039}
   - component: {fileID: 6915554789541908176}
+  - component: {fileID: 5528561335784109556}
   m_Layer: 3
   m_Name: Player_Core
   m_TagString: Untagged
@@ -191,6 +192,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5528561335784109556}
+        m_TargetAssemblyTypeName: MainMenu.SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
   health: {fileID: 6915554789541908176}
   statsData: {fileID: 11400000, guid: ef437e0a2a49e5b4ba3cb40770e63d50, type: 2}
 --- !u!114 &6915554789541908176
@@ -203,5 +216,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5827bdd9561a43a3a5b8e1eed369ed30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5528561335784109556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602748518672861228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b56d8d1af5e4e24a3364e4dfbd128c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

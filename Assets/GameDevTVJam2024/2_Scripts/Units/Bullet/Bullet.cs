@@ -35,6 +35,8 @@ namespace Enemies
         private int _maxContainerRange;
         private int _crossedUnitContainerAmount;
 
+        private bool _wasReleaseToPool;
+
         private void OnEnable()
         {
             InitializeBullet();
@@ -86,12 +88,16 @@ namespace Enemies
 
         private void InitializeBullet()
         {
+            _wasReleaseToPool = false;
             _crossedUnitContainerAmount = 0;
             _rigidbody2D.velocity = Vector2.zero;
         }
 
         private void DisableBullet()
         {
+            if(_wasReleaseToPool) return;
+            
+            _wasReleaseToPool = true;
             StopDisableBulletAtMaxRangeRoutine();
             _objectPool.Release(this);
         }

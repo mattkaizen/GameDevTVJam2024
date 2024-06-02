@@ -11,7 +11,8 @@ namespace Enemies
         }
         
         [SerializeField] private GameObject previewObject;
-
+        [SerializeField] private SpriteRenderer unitSprite;
+        
         public void EnablePreview()
         {
             previewObject.SetActive(true);
@@ -20,7 +21,17 @@ namespace Enemies
         public void DisablePreview()
         {
             previewObject.SetActive(false);
-
         }
+
+        public void EnableUnitSprite()
+        {
+            unitSprite.enabled = true;
+        }
+
+        public void DisableUnitSprite()
+        {
+            unitSprite.enabled = false;
+        }
+        
     }
 }

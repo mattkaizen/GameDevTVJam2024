@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Domain;
+using Enemies;
 using UnityEngine;
 
 namespace Player
@@ -56,8 +57,7 @@ namespace Player
 
             if (container == null)
             {
-                ResetContainerPreview();
-                cardInteractable.GetUnit().Display.DisablePreview();
+                ResetContainerPreview(cardInteractable.GetUnit());
                 return;
             }
             
@@ -65,8 +65,7 @@ namespace Player
             {
                 if (_currentUnitContainer != null && _currentUnitContainer != unitContainer)
                 {
-                    ResetContainerPreview();
-                    cardInteractable.GetUnit().Display.DisablePreview();
+                    ResetContainerPreview(cardInteractable.GetUnit());
                 }
 
                 cardInteractable.GetUnit().RotateUnit(unitContainer.GetContainer().transform.right);
@@ -75,16 +74,15 @@ namespace Player
             }
             else
             {
-                ResetContainerPreview();
-                cardInteractable.GetUnit().Display.DisablePreview();
+                ResetContainerPreview(cardInteractable.GetUnit());
             }
         }
         
-        private void ResetContainerPreview()
+        private void ResetContainerPreview(Unit unit)
         {
             if (_currentUnitContainer == null) return;
             
-            _currentUnitContainer.HideUnitPreview();
+            _currentUnitContainer.HideUnitPreview(unit);
             _currentUnitContainer = null;
         }
     }

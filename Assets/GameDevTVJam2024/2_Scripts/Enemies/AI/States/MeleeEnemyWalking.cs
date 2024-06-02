@@ -12,8 +12,6 @@ namespace Enemies
 
         protected override void Enter()
         {
-            Debug.Log($"Enter {StateName} {AI.IsAlive}");
-
             AI.Movement.SetVelocity(AI.Data.MovementSpeed);
             base.Enter();
         }
@@ -26,7 +24,6 @@ namespace Enemies
 
         protected override void Exit()
         {
-            Debug.Log($"Exit {StateName}");
             AI.Movement.StopRigidbodyMovement();
         }
 
@@ -34,7 +31,6 @@ namespace Enemies
         {
             if (AI.DetectionSystem.HasDetectedDamageable(out var damageable))
             {
-                Debug.Log("Change to Attack state");
                 NextEnemyState = new MeleeEnemyAttacking(AI as MeleeEnemyAI, damageable);
                 Stage = Status.Exit;
             }

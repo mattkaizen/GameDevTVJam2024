@@ -20,7 +20,6 @@ namespace Enemies
         [SerializeField] private List<EnemyPool> enemyPools;
         [SerializeField] private List<EnemyAI> enemiesToSpawn;
         [SerializeField] private List<EnemyAI> currentSpawnEnemies;
-
         
         private IEnumerator _spawnEnemiesOnCycleRoutine;
         private IEnumerator _updateCycleRoutine;
@@ -90,7 +89,6 @@ namespace Enemies
                 _currentEnemyCycleIndex = cycleIndex;
             }
         }
-        
 
         private IEnumerator SpawnEnemiesOnCycleRoutine()
         {
