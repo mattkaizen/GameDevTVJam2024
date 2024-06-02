@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStats_Melee
   m_EditorClassIdentifier: 
   maxHealth: 100
-  damage: 50
-  movementSpeed: 0.25
+  damage: 10
+  movementSpeed: 0.1
   attackRate: 2
-  moneyDropped: 10
+  moneyDropped: 20
