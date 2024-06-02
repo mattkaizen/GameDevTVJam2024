@@ -27,7 +27,7 @@ namespace Enemies
         private bool _isSpawningEnemiesOnCycle;
         private int _currentEnemyCycleIndex;
 
-        private void OnEnable()
+        private void Start()
         {
             StartSpawnOnCycles();
         }
